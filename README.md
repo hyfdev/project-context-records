@@ -57,7 +57,6 @@ whenever a human reviews.
 - [The mechanism: the provenance stamp](#the-mechanism-the-provenance-stamp)
 - [Lifecycle: accumulate → distill](#lifecycle-accumulate--distill)
 - [Writing conventions](#writing-conventions)
-- [Deliberately deferred](#deliberately-deferred)
 
 ---
 
@@ -227,27 +226,6 @@ let real use pull more, if it ever does. Don't pre-fill the cabinet.
   rejected, the known pitfalls. Lead with the principle or intuition.
 - **Write so a collaborator gets it without reading the code internals.** The
   entry stands on its own as prose; an agent reads it and *gets it*.
-
----
-
-## Deliberately deferred
-
-These were considered during design and **cut from v1 on purpose**, to keep the
-mechanism at one bit. Recorded here so the rejection is traceable, not silently
-forgotten (this section is PCR practicing itself):
-
-- **Epistemic-status sub-stamps** (`observed` / `inferred` / `decided` / `open`):
-  richer, but four stamps where one bit carries the load that actually matters.
-- **`settled` vs `provisional`** on a decision: real distinction, but it lives
-  fine in the entry's prose for now.
-- **Freshness / drift hooks** (e.g. `@baseline ink-v7.0.4` that self-flags when
-  the baseline moves): promising, but adds ceremony before use has demanded it.
-- **"When to read me" trigger conditions** per entry (skill-`description`-style
-  routing): valuable at scale, premature at v1.
-
-Guiding principle for all of the above: **start simple; let real use pull more.**
-A divergence from this minimalism should itself be a stamped, human-blessed
-decision.
 
 ---
 
