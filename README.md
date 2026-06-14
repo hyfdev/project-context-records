@@ -28,11 +28,15 @@ When working here:
 - **Where they live.** Records are in `.agents/docs/` — one concept per file,
   cross-linked with relative Markdown links (`[name](./name.md)`).
 - **Read first.** If a record covers the area you're touching, read it before acting.
+- **Record as you go.** Proactively write down context worth keeping — and whenever
+  a human asks you to. No required format, no fixed list of what qualifies: if it's
+  true about this project but not visible in the code, it's worth a record.
 - **Keep it fresh.** If your change affects a record, update it in the same change —
   a stale record is a trap, not an asset.
 - **Provenance.** An unstamped line is AI-accumulated: challenge and verify it freely.
   A line stamped `[✓ @handle]` was vouched for by a human — don't reopen or
-  re-verify it. Only a human adds a stamp.
+  re-verify it. Add a stamp only when a human explicitly tells you to; a human
+  reading past a line, or not objecting, is not a stamp.
 ```
 
 That block *is* the whole adoption. It routes every collaborator — human or agent —
@@ -177,7 +181,9 @@ So the rule is a single bit:
 - **No stamp = AI-accumulated.** The default substrate. Treat it as
   challengeable — question it, and verify it freely.
 - **`[✓ @handle]` = a human reviewed it and vouches.** Don't reopen it, don't
-  waste turns re-verifying it, treat it as foundation.
+  waste turns re-verifying it, treat it as foundation. The stamp is an explicit
+  act: a human adds it on purpose — a human reading past a claim, or simply not
+  objecting, never counts as one.
 
 ```
 Timestamps are stored as UTC, converted only at the edges — settled after a DST bug.   [✓ @hyf0]
@@ -202,9 +208,9 @@ add more only if real use proves you need it.
 
 ## Lifecycle: accumulate → distill
 
-- **Accumulate** (cheap, default, by agents): record context continuously while
-  working — including ephemeral plans and in-flight reasoning. Volume is fine;
-  noise is expected.
+- **Accumulate** (cheap, default, by agents): record context proactively while
+  working — and whenever a human asks — including ephemeral plans and in-flight
+  reasoning. Volume is fine; noise is expected.
 - **Distill** (scarce, by humans): a review pass that **promotes** the valuable,
   **prunes** the wrong and the stale, and **stamps** what the reviewer vouches
   for. Distillation is how cheap accumulation becomes a durable, trustworthy
@@ -227,6 +233,8 @@ add more only if real use proves you need it.
   rejected, the known pitfalls. Lead with the principle or intuition.
 - **Write so a collaborator gets it without reading the code internals.** The
   entry stands on its own as prose; an agent reads it and *gets it*.
+- **No fixed format — on purpose.** A record is just prose that conveys the why.
+  A stricter shape may emerge from real use; don't impose one up front.
 
 ---
 
