@@ -34,7 +34,7 @@ When working here:
 - **Keep it fresh.** If your change affects a record, update it in the same change —
   a stale record is a trap, not an asset.
 - **Provenance.** An unstamped line is AI-accumulated: challenge and verify it freely.
-  A line stamped `[✓ @handle]` was vouched for by a human — don't reopen or
+  A line stamped `[VOUCHED @handle]` was vouched for by a human — don't reopen or
   re-verify it. Add a stamp only when a human explicitly tells you to; a human
   reading past a line, or not objecting, is not a stamp.
 ```
@@ -180,13 +180,13 @@ So the rule is a single bit:
 
 - **No stamp = AI-accumulated.** The default substrate. Treat it as
   challengeable — question it, and verify it freely.
-- **`[✓ @handle]` = a human reviewed it and vouches.** Don't reopen it, don't
+- **`[VOUCHED @handle]` = a human reviewed it and vouches.** Don't reopen it, don't
   waste turns re-verifying it, treat it as foundation. The stamp is an explicit
   act: a human adds it on purpose — a human reading past a claim, or simply not
   objecting, never counts as one.
 
 ```
-Timestamps are stored as UTC, converted only at the edges — settled after a DST bug.   [✓ @hyf0]
+Timestamps are stored as UTC, converted only at the edges — settled after a DST bug.   [VOUCHED @hyf0]
 
 Raising the cache TTL to 1h is probably safe.   ← no stamp: AI-accumulated, verify freely
 ```
