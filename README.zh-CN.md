@@ -16,7 +16,7 @@ PCR 是 **context engineering（上下文工程）** 的一种具体实践。Con
 
 把下面这段内容粘贴到你项目的 `AGENTS.md` / `CLAUDE.md` 中（并把路径改成你实际存放记录的目录）：
 
-```markdown
+```
 ## Project Context Records (PCR)
 
 This project follows **Project Context Records (PCR)** —

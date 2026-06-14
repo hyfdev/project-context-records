@@ -19,7 +19,7 @@ context — the part worth versioning, reviewing, and inheriting across sessions
 Paste this block into your project's `AGENTS.md` / `CLAUDE.md` (point it at
 wherever you keep the records):
 
-```markdown
+```
 ## Project Context Records (PCR)
 
 This project follows **Project Context Records (PCR)** —
