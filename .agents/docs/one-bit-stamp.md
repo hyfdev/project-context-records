@@ -34,5 +34,11 @@ until a human says otherwise.)
 A stamp can sit on a single line (at its end) or on a whole file (at the top); the
 granularity is separate from the bit.
 
+Editing is held to the same bar as stamping: a stamp covers the words it was put on, so materially rewording a vouched line drops the stamp until a human re-vouches — otherwise an agent's new words launder themselves under an old seal. Formatting-only changes keep it.
+
+## The one exception that isn't one: a date
+
+A vouch carries the date it was made — `[VOUCHED @handle 2026-07-08]`. That is a timestamp on the same bit, not a second bit: the status distinctions this file rejects stay barred from the stamp. Why the temporal dimension exists, and how it is audited, is [freshness](./freshness.md)'s topic.
+
 The naming of the methodology this mechanism sits inside is recorded in
 [naming](./naming.md).
