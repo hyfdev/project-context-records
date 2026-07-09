@@ -6,6 +6,14 @@ The methodology's author's own dominant usage is loop engineering: adopt PCR in 
 
 Distillation splits along the stamp. The **unstamped layer** — the loop's own working memory — the loop maintains itself: merge duplicates, prune dead in-flight notes, keep the map honest, keep one live plan record fresh (single-and-fresh applied to loop state). The **vouched layer**, and the act of vouching, stay human-only exactly as before; unattended, the loop queues what needs a human — proposed vouches, conflicts between reality and a vouched call — and its exit act is the distillation draft. The agent-facing rules live in the block's **Unattended** bullet — an adopted agent never reads this repo, so a rule outside the block does not exist for it; [the README's "Unattended runs"](../../README.md#unattended-runs) is the why, for the human setting the loop up.
 
+## The three acts
+
+**Before the loop, the human steers by vouching.** Direction that must survive a hundred iterations is written and vouched before the first one: the goal record, the architecture bets as `architecture.md` (born as a bet, maturing into description), hard constraints in the instructions file outside the block where they fire every session. On a greenfield repo this direction *is* the seed; `pcr-setup` drafts it from the human's brief. The boundary cuts both ways: vouched records are rails the loop may not re-litigate, and what stays unstamped is explicitly delegated — the loop's to decide and revise. If the loop finds evidence against a vouched call, it records the conflict and stays inside the rails unless they make progress impossible; silence is the one thing it may not choose.
+
+**During the loop, the records are its only memory.** Iteration N+1 inherits iteration N's judgment through the records or not at all. The current plan stays one live record, overwritten in place as truth changes — single-and-fresh applied to loop state; git keeps the trail.
+
+**After the loop, the records are the audit trail.** The exit distillation says what was decided, what to vouch, what to prune, and where reality argued with a vouched call — a diff of judgment instead of two hundred transcripts; the next run starts on distilled, partly-vouched ground.
+
 ## What we rejected
 
 - **No self-distillation at all** (the prior state) — the one-bit logic never required a human to tidy AI notes. The human gate exists so AI guesses can't impersonate human confirmation; pruning your own unstamped text impersonates nothing, and the alternative is unbounded noise.

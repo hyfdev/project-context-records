@@ -4,7 +4,16 @@ Distillation — prune the wrong, promote the valuable, vouch what holds — is 
 
 ## The decision
 
-The agent drafts the distillation; the human approves it. A pass produces a reviewable diff over the records, sorted into the moves a human is slow to find by hand — the six categories are specified in [the README's lifecycle section](../../README.md#lifecycle-accumulate--distill), which is the normative list; this record holds the why.
+The agent drafts the distillation; the human approves it. A pass produces a reviewable diff over the records, sorted into the moves a human is slow to find by hand:
+
+- **contradicted** — records that no longer match the code they describe (found by re-reading each against its code);
+- **redundant** — near-duplicate records that should merge;
+- **buried** — valuable context sitting in an accumulated pile, worth promoting;
+- **map drift** — records missing from the map, or map lines pointing at records that moved;
+- **load-bearing but unvouched** — unstamped claims that other records or code lean on, surfaced for a human to vouch or reject;
+- **aging vouches** — vouched records whose code has changed since the stamp's date.
+
+The human approves, edits, and vouches in one pass.
 
 ## Why this stays consistent with the rest of PCR
 

@@ -4,7 +4,9 @@
 
 ## The decision
 
-Once the folder outgrows a glance — or the moment [enrolled records](./existing-docs.md) live outside it — retrieval runs through one privileged record: `.agents/docs/README.md`, the map — routing only, content stays in the records. Below that threshold there is deliberately no map. The mechanics and rationale live in [the README's map section](../../README.md#finding-the-record-the-map); this record holds what was rejected.
+Once the folder outgrows a glance — around a dozen records, or the moment [enrolled records](./existing-docs.md) live outside it — retrieval runs through one privileged record: `.agents/docs/README.md`, the map. Each record is listed once with the code area it covers and a one-line gist — routing only, content stays in the records. Below that threshold there is deliberately no map: a map over three records is ceremony, structure paid for before it returns anything, and PCR adds structure only when real use demands it.
+
+The map is a distilled record, never an accumulated one — you don't pour notes into it, you promote a line when a record earns its place — and it can be vouched like any other; a vouched map is the maintainer's own index of what matters and where. Its upkeep is the cheap kind of drift: a prose record rots invisibly, found only by re-reading it against the code, while the map rots on exactly two mechanical axes — a record present but unlisted, or a line pointing at a record that moved — both caught by cross-checking the map against the folder.
 
 ## What we rejected
 
