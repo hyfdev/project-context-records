@@ -9,7 +9,7 @@ The block's **The basics** bullet recommends a starting list — goal, technolog
 ## The topics, and what earns each its place
 
 - **goal** — the most upstream judgment: what this is trying to be, for whom, and the non-goals that keep scope honest. Its home is a record, not the README — the README pitches to users; the goal record speaks to collaborators and holds what users don't need: the refusals, the priorities, the why. A README that already states it all is enrolled, not twinned.
-- **technology-stack** — the whys the manifest can't say: why these tools over the defaults they displaced, what is pinned and why. The record keeps the why; every-session commands belong in the instructions file, and machine-checkable restrictions belong in the repository's normal enforcement. Both can link back here.
+- **technology-stack** — the whys the manifest can't say: why these tools displaced the defaults, why restrictions exist and when they should be reconsidered, and what is pinned and why. The record keeps that rationale; every-session commands belong in the instructions file, and machine-checkable restrictions belong in the repository's normal enforcement. Both can link back here.
 - **architecture** — the shape as the maintainers hold it: the units, the boundaries between them, and why the lines are where they are. On a greenfield repo it is born as the bets and matures into description as code appears.
 - **conventions** — deliberate departures from ecosystem defaults, so a departure reads as a decision, not an accident a helpful newcomer should fix.
 - **gotchas** — traps already paid for: things that look safe and aren't, each with its why.
