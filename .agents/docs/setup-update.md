@@ -1,13 +1,17 @@
-# Re-running setup is the update mechanism
+# Updating requires a fresh skill and a marked block
 
-PCR ships as a paste-in block plus a setup skill, not as software with a version manager — so "how do adopted projects get updates?" needs an answer that stays light. The answer: run `/pcr-setup` again. Setup is idempotent; on an adopted project it becomes update. The operative procedure lives in [the skill](../../skills/pcr-setup/SKILL.md); this record holds why it works the way it does.
+PCR ships as a paste-in block plus a setup skill, not as software with a version manager — so "how do adopted projects get updates?" needs an answer that stays light and honest about where the latest text comes from. An installed skill contains a snapshot of the block; re-running that snapshot cannot discover a newer one by itself. The operative procedure lives in [the skill](../../skills/pcr-setup/SKILL.md); this record holds why it works the way it does.
 
 ## The decision
 
-An update replaces the project's PCR block with the canonical one and touches nothing else: the block belongs to the methodology; the records — and the records-folder path the project chose, the one parameter carried over — belong to the project. Seeding never re-runs on a folder that already has records.
+Updating has two explicit steps: refresh the installed skill with `npx skills update pcr-setup -g`, then run `/pcr-setup` in the project. The first step obtains the latest canonical block; the second applies it.
 
-## Why canonical-wins, not merge
+The canonical block is bounded by `<!-- PCR:START -->` and `<!-- PCR:END -->`. An update replaces only that marked region and carries over the records-folder path. A safe update first requires exactly one start marker followed by exactly one end marker; if a marker is missing, duplicated, or reversed, setup stops and reports the ambiguity instead of guessing at ownership. The methodology owns the marked text; project-specific routing, commands, and policies live outside it. Records are never touched, and seeding never re-runs on a folder that already has records.
 
-Merging local block edits with upstream changes would need a version marker, three-way diffing, conflict handling — tooling, which [stays outside the spec](./conventions-not-tooling.md). A hard boundary — the block is the methodology's, everything else is the project's — makes the update a plain text replacement an agent does reliably with file edits, and it keeps the block trustworthy: every adopted project runs the same current block, not a drifted local dialect of it.
+A legacy unmarked block gets one careful migration. Setup classifies the old text before editing, moves clearly local additions outside the new PCR markers and every other generated or third-party marker region without changing their wording, then replaces the prior methodology text. If a clause mixes old methodology and a possible local edit, setup stops and shows the proposed split for human confirmation. An update must never guess away a project rule merely because an older block had no ownership boundary.
+
+## Why marked replacement, not merge
+
+Merging arbitrary local edits with upstream changes would need three-way diffing and conflict handling — tooling, which [stays outside the spec](./conventions-not-tooling.md). Two plain HTML comments create the ownership boundary without requiring a parser or CI: canonical text wins inside; project text survives outside. Every marked project can run the same current block without turning a safe update into a destructive rewrite.
 
 Related: [starter-set](./starter-set.md).
