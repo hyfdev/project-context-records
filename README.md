@@ -174,17 +174,17 @@ This is the one piece of hard currency, and it rests on a first principle:
 So the rule is a single bit:
 
 - **No stamp = AI-accumulated.** The default substrate. Treat it as challengeable — question it, and verify it freely.
-- **`[VOUCHED @handle]` = a human vouched for it.** Treat it as foundation: don't re-verify or reopen it for its own sake — do either only on new evidence, a changed constraint, or a human's say-so. A stamp marks a single line (at the end of it) or a whole file (at the top), and represents explicit human vouching: typed by a human, or added by an agent only on a human's explicit instruction. A human reading past a claim, or not objecting, never counts.
+- **`[VOUCHED @handle 2026-07-08]` = a human vouched for it, on that date.** Treat it as foundation: don't re-verify or reopen it for its own sake — do either only on new evidence, a changed constraint, or a human's say-so. A stamp marks a single line (at the end of it) or a whole file (at the top), and represents explicit human vouching: typed by a human, or added by an agent only on a human's explicit instruction — agents date every stamp they add; a hand-typed one may omit the date. A human reading past a claim, or not objecting, never counts.
 
 ```
-Timestamps are stored as UTC, converted only at the edges — settled after a DST bug.   [VOUCHED @hyf0]
+Timestamps are stored as UTC, converted only at the edges — settled after a DST bug.   [VOUCHED @hyf0 2026-07-08]
 
 Raising the cache TTL to 1h is probably safe.   ← no stamp: AI-accumulated, verify freely
 ```
 
 **The stamp covers the words it sits on.** Materially editing a vouched line takes the stamp off until a human re-vouches it — otherwise an agent could reword the claim and leave new words wearing a seal no human gave them. Formatting-only changes keep it.
 
-**And it carries a date.** `[VOUCHED @hyf0 2026-07-08]` — the same bit, timestamped, so "vouched but stale" becomes a state you can see: a [distillation pass](#lifecycle-accumulate--distill) flags vouches older than the code they cover mechanically, not by judgment call. Agents date every stamp they add; a hand-typed one may skip it ([freshness](./.agents/docs/freshness.md)).
+**The date is what makes staleness visible.** It is the same one bit, timestamped — not a new kind of stamp — and it turns "vouched but stale" into a state you can see: a [distillation pass](#lifecycle-accumulate--distill) flags vouches older than the code they cover mechanically, not by judgment call ([freshness](./.agents/docs/freshness.md)).
 
 **The human seal is optional — for continuity, not for control.** The agent-accumulated substrate already carries the memory: an agent inherits what was recorded, vouched or not. What the seal adds is the harness from [Keeping the wheel](#keeping-the-wheel) — the human direction that holds across sessions. So vouch where the stakes justify it, and leave the rest as the honest default.
 
