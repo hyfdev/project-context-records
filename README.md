@@ -7,11 +7,11 @@
 ## Contents
 
 - [The idea](#the-idea)
+- [Adopting PCR](#adopting-pcr)
 - [Day to day: the context practice](#day-to-day-the-context-practice)
 - [Loops: the unattended practice](#loops-the-unattended-practice)
 - [The why](#the-why)
 - [Where it sits](#where-it-sits)
-- [Adopting PCR](#adopting-pcr)
 
 ## The idea
 
@@ -27,6 +27,53 @@ PCR is the practice of keeping that layer as an explicit artifact, versioned wit
 - Structure is **progressive**: named files, formats, and indexes appear when use demands them, never up front.
 
 The same archive is also what makes long unattended runs steerable: the vouched records are the rails, the records are the loop's memory across iterations, and the run ends in a state the returning human can read. Context engineering is the guiding idea — what a model sees decides what it does. PCR is that idea practiced at project scale. Loops are where it pays off.
+
+## Adopting PCR
+
+**With the setup skill** (recommended):
+
+```
+npx skills add hyfdev/project-context-records -g
+```
+
+Then run `/pcr-setup` in any project. To update an adopted project later, refresh the skill first, then re-run it:
+
+```
+npx skills update pcr-setup -g
+```
+
+`npx skills` fetches the latest methodology; running `/pcr-setup` in the project applies it. (Skill installs are powered by [skills.sh](https://www.skills.sh).)
+
+**Or by hand:** paste the block below into the project's `AGENTS.md`, pointing the "Where records live" bullet at your records folder if it differs from the default.
+
+The block is the **entire adoption surface**. An adopted project's agents read `AGENTS.md` every session and never fetch this repo: what must reach them is in the block, and everything else here is for humans. It lives in `AGENTS.md` deliberately — the emerging cross-tool standard for agent instructions — so one file reaches every agent; keep `CLAUDE.md` and its cousins as symlinks to it. The markers bound ownership: re-running `/pcr-setup` replaces only the text between `<!-- PCR:START -->` and `<!-- PCR:END -->`, carries your records-folder path over, and never touches your records. Project-specific rules live outside the markers.
+
+```
+<!-- PCR:START -->
+## Project Context Records (PCR)
+
+This project follows **Project Context Records (PCR)** — methodology: https://github.com/hyfdev/project-context-records. PCR keeps the project's durable judgment — the *why*, the decisions, the intent — so you inherit it instead of re-deriving or re-litigating what's already settled.
+
+When working here:
+- **Where records live.** Records are in `.agents/docs/`, one topic per file, cross-linked with relative Markdown links. A `README.md` there is the **map**: it routes code areas or hotspots to the exact record or heading. Create it when retrieval stops being a glance or one record grows into a long ledger.
+- **Read first.** Start from the map if present, else scan the folder. Open the records or headings that cover an area before changing or answering for it; if the area has a decision ledger, read it first.
+- **Use the strongest durable form.** Put machine-checkable constraints in types, tests, lints, or CI; put single-spot rationale beside the code with a link; use records for cross-cutting judgment, intent, and context that must stay prose.
+- **Record as you go.** Capture context when a decision lands, a trap costs you, a human corrects you, or a human asks. If it is true about this project, not durable in a stronger form, and useful beyond the moment, record it. Report what you record so a human can review or vouch it. Records are as public as the repo: keep secrets out, and ask before recording rationale from private context.
+- **Keep it fresh.** Update affected records in the same change. When code and a record disagree, decide which side went stale and fix that side; surface conflicts with vouched text to a human. Back facts with durable evidence — tests, reproducible commands, committed artifacts, stable URLs, commit hashes — not ephemeral paths or missing screenshots.
+- **Provenance.** Unstamped text is AI-accumulated: challenge and verify it freely. `[VOUCHED @handle YYYY-MM-DD]` means the named human explicitly accepted the covered words as current project direction — not that a factual claim is proven. Scope: at a non-heading line's end it covers that line; alone on the first nonblank line below a heading it covers that section; alone below the document title it covers the file. Never put a stamp in heading text. Add one only on explicit instruction; a stamp added by work under review counts only once the named human confirms it, while an unchanged stamp on the target branch is inherited project state. Materially editing covered words removes the stamp until the human re-vouches. Legacy stamp forms (undated, before the title, inside a heading) keep their original scope; never move or reinterpret them without the human's approval.
+- **Decision ledgers.** When the human declares that an area records decisions, keep that area's judgments in `<area>-decisions.md` — beside the area's derived document when one has a conventional home (`DESIGN-decisions.md` beside `DESIGN.md`), else in the records folder, with a map route. Read it before touching the area, and register new judgments there. Register only what the human actually expressed — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance — and never invent a rationale. Entries sit under **Decided** or **Open**. A Decided entry: a short stable heading; the ruling in one plain sentence, its force in its own wording; its limits (what it doesn't govern, what reopens it); the why exactly as given; the source (who, when). A vouch stamp sits alone under the entry's heading, covering the whole entry. An Open entry marks a known-undecided question — current behavior is not a choice — plus any stopgap and what would settle it. Record the judgment, not the chosen thing's full content — details live in the area's own document, linked. Edit entries in place; git keeps history. You may propose opening a ledger; only the human opens one.
+- **Distill when a human reviews.** Accumulation is noisy by design; the valve is a human pass. Draft what to prune, merge, or promote, and flag vouches plausibly affected by changes to what they cover. The human decides and vouches.
+- **Loops.** In an unattended run, `loop-goal.md` is the contract — issued by the human; never edit it, and treat a human change as a re-baseline — and `loop-status.md` is your memory (done, in flight, next, blocked), overwritten in place each iteration. Tidy your own unstamped layer — merge duplicates, prune dead notes — never the vouched one. When evidence argues with vouched direction, record the conflict and stay inside the direction unless progress becomes impossible. End by overwriting `loop-status.md` into the returning human's view — what landed, what to vouch, conflicts included. No run, however long or green, vouches anything.
+- **Suggested topics.** Draft the missing ones that apply; when an existing doc already covers a topic, enroll it — a map route pointing at it where it lives — instead of drafting a twin:
+  - `intent.md` — what this is trying to be, for whom, and the non-goals; enroll the README instead if it truly covers them.
+  - `technology-stack.md` — why tools, restrictions, and pins exist; not a manifest dump.
+  - `architecture.md` — units, boundaries, and why the lines are where they are; when structure isn't glanceable.
+  - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
+  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md, keep it at the root, and enroll it in the map.
+<!-- PCR:END -->
+```
+
+Then just work: accumulate freely, distill when you review, vouch what should keep steering.
 
 ## Day to day: the context practice
 
@@ -177,52 +224,5 @@ Guiding idea    Context Engineering — what a model sees decides what it does
 ```
 
 Loop engineering — running the unattended loops above — sits on top, as the payoff: runs steered by the vouched layer, remembered through the records.
-
-## Adopting PCR
-
-**With the setup skill** (recommended):
-
-```
-npx skills add hyfdev/project-context-records -g
-```
-
-Then run `/pcr-setup` in any project. To update an adopted project later, refresh the skill first, then re-run it:
-
-```
-npx skills update pcr-setup -g
-```
-
-`npx skills` fetches the latest methodology; running `/pcr-setup` in the project applies it. (Skill installs are powered by [skills.sh](https://www.skills.sh).)
-
-**Or by hand:** paste the block below into the project's `AGENTS.md`, pointing the "Where records live" bullet at your records folder if it differs from the default.
-
-The block is the **entire adoption surface**. An adopted project's agents read `AGENTS.md` every session and never fetch this repo: what must reach them is in the block, and everything else here is for humans. It lives in `AGENTS.md` deliberately — the emerging cross-tool standard for agent instructions — so one file reaches every agent; keep `CLAUDE.md` and its cousins as symlinks to it. The markers bound ownership: re-running `/pcr-setup` replaces only the text between `<!-- PCR:START -->` and `<!-- PCR:END -->`, carries your records-folder path over, and never touches your records. Project-specific rules live outside the markers.
-
-```
-<!-- PCR:START -->
-## Project Context Records (PCR)
-
-This project follows **Project Context Records (PCR)** — methodology: https://github.com/hyfdev/project-context-records. PCR keeps the project's durable judgment — the *why*, the decisions, the intent — so you inherit it instead of re-deriving or re-litigating what's already settled.
-
-When working here:
-- **Where records live.** Records are in `.agents/docs/`, one topic per file, cross-linked with relative Markdown links. A `README.md` there is the **map**: it routes code areas or hotspots to the exact record or heading. Create it when retrieval stops being a glance or one record grows into a long ledger.
-- **Read first.** Start from the map if present, else scan the folder. Open the records or headings that cover an area before changing or answering for it; if the area has a decision ledger, read it first.
-- **Use the strongest durable form.** Put machine-checkable constraints in types, tests, lints, or CI; put single-spot rationale beside the code with a link; use records for cross-cutting judgment, intent, and context that must stay prose.
-- **Record as you go.** Capture context when a decision lands, a trap costs you, a human corrects you, or a human asks. If it is true about this project, not durable in a stronger form, and useful beyond the moment, record it. Report what you record so a human can review or vouch it. Records are as public as the repo: keep secrets out, and ask before recording rationale from private context.
-- **Keep it fresh.** Update affected records in the same change. When code and a record disagree, decide which side went stale and fix that side; surface conflicts with vouched text to a human. Back facts with durable evidence — tests, reproducible commands, committed artifacts, stable URLs, commit hashes — not ephemeral paths or missing screenshots.
-- **Provenance.** Unstamped text is AI-accumulated: challenge and verify it freely. `[VOUCHED @handle YYYY-MM-DD]` means the named human explicitly accepted the covered words as current project direction — not that a factual claim is proven. Scope: at a non-heading line's end it covers that line; alone on the first nonblank line below a heading it covers that section; alone below the document title it covers the file. Never put a stamp in heading text. Add one only on explicit instruction; a stamp added by work under review counts only once the named human confirms it, while an unchanged stamp on the target branch is inherited project state. Materially editing covered words removes the stamp until the human re-vouches. Legacy stamp forms (undated, before the title, inside a heading) keep their original scope; never move or reinterpret them without the human's approval.
-- **Decision ledgers.** When the human declares that an area records decisions, keep that area's judgments in `<area>-decisions.md` — beside the area's derived document when one has a conventional home (`DESIGN-decisions.md` beside `DESIGN.md`), else in the records folder, with a map route. Read it before touching the area, and register new judgments there. Register only what the human actually expressed — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance — and never invent a rationale. Entries sit under **Decided** or **Open**. A Decided entry: a short stable heading; the ruling in one plain sentence, its force in its own wording; its limits (what it doesn't govern, what reopens it); the why exactly as given; the source (who, when). A vouch stamp sits alone under the entry's heading, covering the whole entry. An Open entry marks a known-undecided question — current behavior is not a choice — plus any stopgap and what would settle it. Record the judgment, not the chosen thing's full content — details live in the area's own document, linked. Edit entries in place; git keeps history. You may propose opening a ledger; only the human opens one.
-- **Distill when a human reviews.** Accumulation is noisy by design; the valve is a human pass. Draft what to prune, merge, or promote, and flag vouches plausibly affected by changes to what they cover. The human decides and vouches.
-- **Loops.** In an unattended run, `loop-goal.md` is the contract — issued by the human; never edit it, and treat a human change as a re-baseline — and `loop-status.md` is your memory (done, in flight, next, blocked), overwritten in place each iteration. Tidy your own unstamped layer — merge duplicates, prune dead notes — never the vouched one. When evidence argues with vouched direction, record the conflict and stay inside the direction unless progress becomes impossible. End by overwriting `loop-status.md` into the returning human's view — what landed, what to vouch, conflicts included. No run, however long or green, vouches anything.
-- **Suggested topics.** Draft the missing ones that apply; when an existing doc already covers a topic, enroll it — a map route pointing at it where it lives — instead of drafting a twin:
-  - `intent.md` — what this is trying to be, for whom, and the non-goals; enroll the README instead if it truly covers them.
-  - `technology-stack.md` — why tools, restrictions, and pins exist; not a manifest dump.
-  - `architecture.md` — units, boundaries, and why the lines are where they are; when structure isn't glanceable.
-  - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
-  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md, keep it at the root, and enroll it in the map.
-<!-- PCR:END -->
-```
-
-Then just work: accumulate freely, distill when you review, vouch what should keep steering.
 
 [adr-hub]: https://adr.github.io/
