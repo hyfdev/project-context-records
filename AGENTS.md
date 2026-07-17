@@ -10,7 +10,7 @@ This repo *is* the **Project Context Records (PCR)** methodology. The canonical 
 
 Two families of by-design copies exist; a change to one member updates the others in the same commit:
 
-- **The adoption block**, including its `PCR:START` / `PCR:END` markers, lives byte-identical in `README.md` and `skills/pcr-setup/SKILL.md` — two copies today; `README.zh-CN.md` rejoins as the third when its retranslation lands. Editing the block means editing every copy by hand in the same commit, then verifying they still match.
+- **The adoption block**, including its `PCR:START` / `PCR:END` markers, lives byte-identical in `README.md`, `README.zh-CN.md`, and `skills/pcr-setup/SKILL.md`. Editing the block means editing every copy by hand in the same commit, then verifying they still match.
 - **The translation.** `README.md` (English) is the source of truth; `README.zh-CN.md` must track it exactly — a drifted translation is worse than none: it silently misinforms. When the two disagree, `README.md` wins; fix the translation to match. Keep the coined terms (Project Context Records / PCR, Context Engineering, ADR, the provenance stamp), every URL, and the adoption block identical and untranslated across both files.
 
 ## Repo conventions
