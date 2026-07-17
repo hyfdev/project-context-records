@@ -46,7 +46,7 @@ npx skills update pcr-setup -g
 
 **Or by hand:** paste the block below into the project's `AGENTS.md`, pointing the "Where records live" bullet at your records folder if it differs from the default.
 
-The block is the **entire adoption surface**. An adopted project's agents read `AGENTS.md` every session and never fetch this repo: what must reach them is in the block, and everything else here is for humans. It therefore optimizes for completeness, not brevity — every rule an agent must follow lives in it, at full strength, because no other channel exists. Everything it names — the map, the stamp, decision ledgers, the loop files — is explained in the chapters that follow. It lives in `AGENTS.md` deliberately — the emerging cross-tool standard for agent instructions — so one file reaches every agent; keep `CLAUDE.md` and its cousins as symlinks to it. The markers bound ownership: re-running `/pcr-setup` replaces only the text between `<!-- PCR:START -->` and `<!-- PCR:END -->`, carries your records-folder path over, and never touches your records (setup may offer to rename a legacy `goal.md` to `intent.md`; it applies only with your approval). Project-specific rules live outside the markers.
+The block is the **entire adoption surface**. An adopted project's agents read `AGENTS.md` every session and never fetch this repo: what must reach them is in the block, and everything else here is for humans. It therefore optimizes for completeness, not brevity — every rule an agent must follow lives in it, at full strength, because no other channel exists. Everything it names — the map, the stamp, decision ledgers, the loop files — is explained in the chapters that follow. It lives in `AGENTS.md` deliberately — the emerging cross-tool standard for agent instructions — so one file reaches every agent; keep `CLAUDE.md` and its cousins as symlinks to it. The markers bound ownership: re-running `/pcr-setup` replaces only the text between `<!-- PCR:START -->` and `<!-- PCR:END -->`, carries your records-folder path over, and never modifies existing records — its only record-side acts, seeding drafts into an empty folder and renaming a legacy `goal.md` to `intent.md`, each happen only on your approval. Project-specific rules live outside the markers.
 
 ```
 <!-- PCR:START -->
@@ -94,8 +94,8 @@ When working here:
   - `technology-stack.md` — why tools, restrictions, and pins exist; not a manifest dump.
   - `architecture.md` — units, boundaries, and why the lines are where they are; when structure isn't glanceable.
   - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
-  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (repo root by default — the spec fixes no location), enroll it in the map, and wire its official linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks.
-  - `loop-goal.md` — only for an unattended run: the run's contract — goal, boundaries, finish criteria — issued by the human (you may draft it; the human's go authorizes it). Never edit it mid-run; a human change to it re-baselines the run.
+  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (repo root by default — the spec fixes no location), enroll it in the map, and suggest wiring its linter into the project's own checks (`npx @google/design.md lint DESIGN.md`; platform variants in the spec).
+  - `loop-goal.md` — only for an unattended run: the run's contract — goal, boundaries, finish criteria. You may draft it; the run starts only once the human has vouched the whole file (stamp below the title), and a human edit plus re-vouch re-baselines it. Never edit it yourself; if the contract itself blocks progress, stop and surface the conflict rather than stepping outside it.
   - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after the human's distillation pass over that handover; git keeps them.
 <!-- PCR:END -->
 ```
@@ -131,7 +131,7 @@ A blank folder gives no first move. These names remove the "what file do I creat
 - **`technology-stack.md`** — why these tools over the defaults they displaced, what must not be introduced, what is pinned and why. When tool judgment exists; never a manifest dump.
 - **`architecture.md`** — the units, the boundaries between them, and why the lines are where they are. When the structure stops being glanceable from the code.
 - **`gotchas.md`** — traps already paid for, each with its why. Only real paid lessons; better no file than invented "common pitfalls".
-- **`DESIGN.md`** — only for a project with a visual surface: its visual identity described for coding agents, per the [design.md spec](https://github.com/google-labs-code/design.md) — checked by that ecosystem's own linter and enrolled in the map. The spec fixes no location; the repo root is the usual home.
+- **`DESIGN.md`** — only for a project with a visual surface: its visual identity described for coding agents, per the [design.md spec](https://github.com/google-labs-code/design.md) — enrolled in the map, with that ecosystem's own linter available for the project's checks. The spec fixes no location; the repo root is the usual home.
 
 ### The map
 
@@ -187,14 +187,14 @@ The hardest reader PCR serves is not a session but a run: an agent iterating —
 
 Two files carry a run, both under the `loop-` prefix. The prefix is a lifecycle marker: `loop-*` files are born when a run starts and die after its distillation — run-scoped state, visibly separate from the project-scoped records they sit among. Git keeps their history.
 
-- **`loop-goal.md` — the contract.** What this run must accomplish, its boundaries, its finish criteria. The human issues it; an agent may draft it, but the human's go authorizes it. **The loop never edits its own contract.** Only the human changes it, and a changed contract re-baselines the run.
+- **`loop-goal.md` — the contract.** What this run must accomplish, its boundaries, its finish criteria. An agent may draft it, but the run starts only once the human has vouched the whole file — the contract is vouched direction, carried by the same stamp as everything else, not a second authorization channel. **The loop never edits its own contract.** Only the human changes it, and a changed, re-vouched contract re-baselines the run; if the contract itself blocks progress, the loop stops and surfaces the conflict instead of stepping outside it.
 - **`loop-status.md` — the memory.** Done, in flight, next, blocked — overwritten in place every iteration: one file, always current. Iteration N+1 inherits iteration N through this file and the records, or not at all.
 
 The kickoff can then be one line — *execute the contract in `loop-goal.md`* — because the file, not the prompt, is the authority. Any driver that can re-invoke an agent can run the same loop.
 
 A run has three acts:
 
-**Before, the human steers by vouching.** Direction that must survive a hundred iterations is written and vouched before the first: `intent.md`, the architecture bets, the rulings in any active ledgers — with hard every-session rules in the instructions file and machine-checkable constraints in CI, each in its stronger home. The boundary cuts both ways: vouched records are direction the loop may not re-litigate, and what stays unstamped is explicitly delegated — the loop's to decide and revise.
+**Before, the human steers by vouching.** Direction that must survive a hundred iterations is written and vouched before the first: `intent.md`, the architecture bets, the rulings in any active ledgers, and the contract itself in `loop-goal.md` — with hard every-session rules in the instructions file and machine-checkable constraints in CI, each in its stronger home. The boundary cuts both ways: vouched records are direction the loop may not re-litigate, and what stays unstamped is explicitly delegated — the loop's to decide and revise.
 
 **During, the records are the only memory.** The loop reads them, keeps them fresh, and tidies its own unstamped layer — merging duplicates, pruning dead notes — while never touching the vouched one. When evidence argues with vouched direction, it records the conflict and stays inside the direction unless progress becomes impossible; silence is the one choice it does not have.
 
