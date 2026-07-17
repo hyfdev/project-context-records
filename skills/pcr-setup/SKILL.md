@@ -29,12 +29,12 @@ Do this directly with your file tools — it is a few small, reliable edits, no 
     - `technology-stack.md` — why these tools over the defaults they displaced, what must not be introduced, what is pinned and why. Not a manifest dump.
     - `architecture.md` — the units, the boundaries between them, and why the lines are where they are. Only when the structure isn't glanceable from the code.
     - `gotchas.md` — traps already paid for: things that look safe and aren't, each with its why. Only real paid lessons — never invent "common pitfalls" to fill the file.
-    - `DESIGN.md` — only if the project has a visual surface (a UI, a site, themed output): its visual identity for coding agents — design tokens plus their why — following the design.md spec (https://github.com/google-labs-code/design.md). Draft it at the repo root (that convention's home) and enroll it in the map. Whenever a `DESIGN.md` exists — found or drafted — suggest wiring its linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks (CI or pre-commit) rather than running it once; for a project with no visual surface, don't mention the file or the linter at all.
+    - `DESIGN.md` — only if the project has a visual surface (a UI, a site, themed output): its visual identity for coding agents — design tokens plus their why — following the design.md spec (https://github.com/google-labs-code/design.md). Draft it at the repo root by default (the spec fixes no location) and enroll it in the map. Whenever a `DESIGN.md` exists — found or drafted — suggest wiring its linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks (CI or pre-commit) rather than running it once; for a project with no visual surface, don't mention the file or the linter at all.
 - [ ] 6. Tell the user in one or two lines what changed, including any legacy project rules moved outside the markers. Say that records live under the folder and a human can explicitly vouch a line, section, or whole file with `[VOUCHED @<their-handle> YYYY-MM-DD]`. If records were seeded, say they are unstamped drafts awaiting review.
 
 ## Opening a decision ledger (on the user's declaration)
 
-A decision ledger is opt-in and per-area: it exists only after the human declares that an area records decisions ("design decisions get recorded from now on"). When that happens, create `<area>-decisions.md` from the template below — next to the area's derived document when that document has a conventional home (`DESIGN-decisions.md` beside `DESIGN.md` at the repo root), otherwise in the records folder — and add a map route to it. You may suggest a ledger when an area's judgments grow dense; only the human's declaration creates one.
+A decision ledger is opt-in and per-area: it exists only after the human declares that an area records decisions ("design decisions get recorded from now on"). When that happens, create `<area>-decisions.md` from the template below — next to the area's derived document (`DESIGN-decisions.md` beside `DESIGN.md`), otherwise in the records folder — and add a map route to it. You may suggest a ledger when an area's judgments grow dense; only the human's declaration creates one.
 
 ### The ledger template
 
@@ -92,7 +92,7 @@ When working here:
   - The stamp binds the exact covered words. Any edit that changes them — or changes which words the scope covers — removes the stamp until the human re-vouches; a change that leaves the covered words identical keeps it.
   - Legacy stamp forms (undated, before the title, inside a heading) stay valid with their original scope; never move, re-date, or reinterpret one without the human's approval.
 - **Decision ledgers.** When the human declares that an area records decisions, keep that area's judgments in `<area>-decisions.md` and register new judgments there.
-  - Placement: beside the area's derived document when one has a conventional home (`DESIGN-decisions.md` beside `DESIGN.md`), else in the records folder — with a map route either way.
+  - Placement: beside the area's derived document (`DESIGN-decisions.md` beside `DESIGN.md`); with no derived document, in the records folder — a map route either way.
   - You may propose opening a ledger; only the human opens one.
   - The register contract: only judgments the human actually expressed enter — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance. Never invent a rationale: if no reason was given, the entry says so.
   - Record the act of judgment, not the chosen thing's full content — exhaustive detail lives in the area's own document, linked. Edit entries in place; git keeps history.
@@ -112,7 +112,7 @@ When working here:
   - `technology-stack.md` — why tools, restrictions, and pins exist; not a manifest dump.
   - `architecture.md` — units, boundaries, and why the lines are where they are; when structure isn't glanceable.
   - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
-  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md, keep it at the root, enroll it in the map, and wire its official linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks.
+  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (repo root by default — the spec fixes no location), enroll it in the map, and wire its official linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks.
   - `loop-goal.md` — only for an unattended run: the run's contract — goal, boundaries, finish criteria — issued by the human (you may draft it; the human's go authorizes it). Never edit it mid-run; a human change to it re-baselines the run.
   - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after that distillation pass; git keeps them.
 <!-- PCR:END -->

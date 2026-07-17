@@ -74,7 +74,7 @@ When working here:
   - The stamp binds the exact covered words. Any edit that changes them — or changes which words the scope covers — removes the stamp until the human re-vouches; a change that leaves the covered words identical keeps it.
   - Legacy stamp forms (undated, before the title, inside a heading) stay valid with their original scope; never move, re-date, or reinterpret one without the human's approval.
 - **Decision ledgers.** When the human declares that an area records decisions, keep that area's judgments in `<area>-decisions.md` and register new judgments there.
-  - Placement: beside the area's derived document when one has a conventional home (`DESIGN-decisions.md` beside `DESIGN.md`), else in the records folder — with a map route either way.
+  - Placement: beside the area's derived document (`DESIGN-decisions.md` beside `DESIGN.md`); with no derived document, in the records folder — a map route either way.
   - You may propose opening a ledger; only the human opens one.
   - The register contract: only judgments the human actually expressed enter — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance. Never invent a rationale: if no reason was given, the entry says so.
   - Record the act of judgment, not the chosen thing's full content — exhaustive detail lives in the area's own document, linked. Edit entries in place; git keeps history.
@@ -94,7 +94,7 @@ When working here:
   - `technology-stack.md` — why tools, restrictions, and pins exist; not a manifest dump.
   - `architecture.md` — units, boundaries, and why the lines are where they are; when structure isn't glanceable.
   - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
-  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md, keep it at the root, enroll it in the map, and wire its official linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks.
+  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (repo root by default — the spec fixes no location), enroll it in the map, and wire its official linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks.
   - `loop-goal.md` — only for an unattended run: the run's contract — goal, boundaries, finish criteria — issued by the human (you may draft it; the human's go authorizes it). Never edit it mid-run; a human change to it re-baselines the run.
   - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after that distillation pass; git keeps them.
 <!-- PCR:END -->
@@ -131,7 +131,7 @@ A blank folder gives no first move. These names remove the "what file do I creat
 - **`technology-stack.md`** — why these tools over the defaults they displaced, what must not be introduced, what is pinned and why. When tool judgment exists; never a manifest dump.
 - **`architecture.md`** — the units, the boundaries between them, and why the lines are where they are. When the structure stops being glanceable from the code.
 - **`gotchas.md`** — traps already paid for, each with its why. Only real paid lessons; better no file than invented "common pitfalls".
-- **`DESIGN.md`** — only for a project with a visual surface: its visual identity described for coding agents, per the [design.md spec](https://github.com/google-labs-code/design.md) — at the repo root, checked by that ecosystem's own linter, enrolled in the map.
+- **`DESIGN.md`** — only for a project with a visual surface: its visual identity described for coding agents, per the [design.md spec](https://github.com/google-labs-code/design.md) — checked by that ecosystem's own linter and enrolled in the map. The spec fixes no location; the repo root is the usual home.
 
 ### The map
 
@@ -172,7 +172,7 @@ One length discipline keeps a ledger from bloating into a second spec: **it reco
 
 There is no superseded state. When a ruling changes, edit the affected entries in place, in the same change; git keeps the evolution.
 
-A ledger often stands **paired** with a derived document that an AI keeps current: the ledger holds what the human ruled; the document holds the synthesized present truth, checkable against the ledger. The visual instance of the pairing is `DESIGN-decisions.md` beside `DESIGN.md`. A ledger lives next to its derived document when that document has a conventional home; otherwise in the records folder. Either way, the map routes to it.
+A ledger often stands **paired** with a derived document that an AI keeps current: the ledger holds what the human ruled; the document holds the synthesized present truth, checkable against the ledger. The visual instance of the pairing is `DESIGN-decisions.md` beside `DESIGN.md`. A ledger lives next to its derived document; with no derived document, it lives in the records folder. Either way, the map routes to it.
 
 For a real, public ancestor of this pattern, see [musubi's `DESIGN-decisions.md`](https://github.com/hyfdev/musubi/blob/v2/DESIGN-decisions.md) — the file the ledger was promoted from. It predates the format above, and the drift visible in it — a five-value status vocabulary that collapsed in practice to one value, entries swelling into spec detail, a self-invented format section at the bottom of the file — is exactly why the format exists.
 
