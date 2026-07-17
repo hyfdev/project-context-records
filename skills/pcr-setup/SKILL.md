@@ -76,7 +76,7 @@ When working here:
 - **Where records live.** Records are in `.agents/docs/`, one topic per file, cross-linked with relative Markdown links.
   - A `README.md` there is the **map**: it routes code areas or hotspots to the exact record or heading, one-line gist per route. Create it when retrieval stops being a glance or one record grows into a long ledger.
 - **Read first.** Start from the map if present, else scan the folder. Open the records or headings that cover an area before changing or answering for it; if the area has a decision ledger, read it first.
-- **Use the strongest durable form.** Machine-checkable constraints go in types, tests, lints, or CI; single-spot rationale goes beside the code with a link; records carry the cross-cutting judgment, intent, and context that must stay prose.
+- **Use the strongest durable form.** Machine-checkable constraints go in types, tests, lints, or CI; rules that must bind every session go in the agent-instructions file, outside the markers; single-spot rationale goes beside the code with a link; records carry the cross-cutting judgment, intent, and context that must stay prose.
 - **Record as you go.** Capture context when a decision lands, a trap costs you, a human corrects you, or a human asks — anything true about this project, not durable in a stronger form, and useful beyond the moment.
   - Report what you record so a human can review or vouch it.
   - Records are as public as the repo: keep secrets out, and ask before recording rationale from private context.
@@ -94,7 +94,7 @@ When working here:
 - **Decision ledgers.** When the human declares that an area records decisions, keep that area's judgments in `<area>-decisions.md` and register new judgments there.
   - Placement: beside the area's derived document (`DESIGN-decisions.md` beside `DESIGN.md`); with no derived document, in the records folder — a map route either way.
   - You may propose opening a ledger; only the human opens one.
-  - The register contract: only judgments the human actually expressed enter — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance. Never invent a rationale: if no reason was given, the entry says so.
+  - The register contract, stated at the top of the file: only judgments the human actually expressed enter — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance. Never invent a rationale: if no reason was given, the entry says so.
   - Record the act of judgment, not the chosen thing's full content — exhaustive detail lives in the area's own document, linked. Edit entries in place; git keeps history.
   - Entries sit under **Decided** or **Open**. An Open entry marks a known-undecided question — current behavior is not a choice — with any stopgap and what would settle it. A Decided entry carries:
     - a short stable topic heading — map routes and stamp scopes anchor to it;
@@ -114,6 +114,6 @@ When working here:
   - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
   - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (repo root by default — the spec fixes no location), enroll it in the map, and wire its official linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks.
   - `loop-goal.md` — only for an unattended run: the run's contract — goal, boundaries, finish criteria — issued by the human (you may draft it; the human's go authorizes it). Never edit it mid-run; a human change to it re-baselines the run.
-  - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after that distillation pass; git keeps them.
+  - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after the human's distillation pass over that handover; git keeps them.
 <!-- PCR:END -->
 ```

@@ -58,7 +58,7 @@ When working here:
 - **Where records live.** Records are in `.agents/docs/`, one topic per file, cross-linked with relative Markdown links.
   - A `README.md` there is the **map**: it routes code areas or hotspots to the exact record or heading, one-line gist per route. Create it when retrieval stops being a glance or one record grows into a long ledger.
 - **Read first.** Start from the map if present, else scan the folder. Open the records or headings that cover an area before changing or answering for it; if the area has a decision ledger, read it first.
-- **Use the strongest durable form.** Machine-checkable constraints go in types, tests, lints, or CI; single-spot rationale goes beside the code with a link; records carry the cross-cutting judgment, intent, and context that must stay prose.
+- **Use the strongest durable form.** Machine-checkable constraints go in types, tests, lints, or CI; rules that must bind every session go in the agent-instructions file, outside the markers; single-spot rationale goes beside the code with a link; records carry the cross-cutting judgment, intent, and context that must stay prose.
 - **Record as you go.** Capture context when a decision lands, a trap costs you, a human corrects you, or a human asks — anything true about this project, not durable in a stronger form, and useful beyond the moment.
   - Report what you record so a human can review or vouch it.
   - Records are as public as the repo: keep secrets out, and ask before recording rationale from private context.
@@ -76,7 +76,7 @@ When working here:
 - **Decision ledgers.** When the human declares that an area records decisions, keep that area's judgments in `<area>-decisions.md` and register new judgments there.
   - Placement: beside the area's derived document (`DESIGN-decisions.md` beside `DESIGN.md`); with no derived document, in the records folder — a map route either way.
   - You may propose opening a ledger; only the human opens one.
-  - The register contract: only judgments the human actually expressed enter — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance. Never invent a rationale: if no reason was given, the entry says so.
+  - The register contract, stated at the top of the file: only judgments the human actually expressed enter — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance. Never invent a rationale: if no reason was given, the entry says so.
   - Record the act of judgment, not the chosen thing's full content — exhaustive detail lives in the area's own document, linked. Edit entries in place; git keeps history.
   - Entries sit under **Decided** or **Open**. An Open entry marks a known-undecided question — current behavior is not a choice — with any stopgap and what would settle it. A Decided entry carries:
     - a short stable topic heading — map routes and stamp scopes anchor to it;
@@ -96,7 +96,7 @@ When working here:
   - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
   - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (repo root by default — the spec fixes no location), enroll it in the map, and wire its official linter (`npx @google/design.md lint DESIGN.md`) into the project's own checks.
   - `loop-goal.md` — only for an unattended run: the run's contract — goal, boundaries, finish criteria — issued by the human (you may draft it; the human's go authorizes it). Never edit it mid-run; a human change to it re-baselines the run.
-  - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after that distillation pass; git keeps them.
+  - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after the human's distillation pass over that handover; git keeps them.
 <!-- PCR:END -->
 ```
 
@@ -146,7 +146,7 @@ In an AI-maintained archive, text is cheap and AI-authored by default. The scarc
 
 A vouch is about direction, not truth. It does not make a factual claim proven; facts keep needing durable evidence. The date records when the human last accepted the direction — age you can see, not freshness you can assume.
 
-Scope, in one breath: at the end of a line, the stamp covers that line; alone on the first nonblank line below a heading, that section; alone below the document title, the whole file. It never goes inside heading text, because link anchors derive from headings. Materially editing covered words takes the stamp off until the human re-vouches — otherwise an agent's new words would wear a seal no human gave them. The full operating rules an agent needs — when a new stamp counts, how legacy stamps are treated — travel in the [adoption block](#adopting-pcr), not here.
+Scope, in one breath: at the end of a line, the stamp covers that line; alone on the first nonblank line below a heading, that section; alone below the document title, the whole file. It never goes inside heading text, because link anchors derive from headings. Editing the covered words takes the stamp off until the human re-vouches — only a change that leaves them identical keeps it; otherwise an agent's new words would wear a seal no human gave them. The full operating rules an agent needs — when a new stamp counts, how legacy stamps are treated — travel in the [adoption block](#adopting-pcr), not here.
 
 Why only one kind of stamp: the worst failure of an AI-maintained archive is the AI's own proposal being mistaken for direction a human accepted, and then built upon. The stamp draws exactly that line — explicitly accepted, or not. Finer distinctions (decision or observation, settled or tentative) belong in an entry's own text. Start with one bit; add more only if real use proves the need.
 
@@ -166,7 +166,7 @@ Entries sit in two zones — **Decided**, and **Open** for the known-undecided. 
 - the **why** — premises, alternatives compared, rejections — exactly as given;
 - the **source** — who expressed it and when, with a durable pointer when one exists. When the decision was "accept the reviewed thing as a whole", pin the thing — a commit hash, a spec section — instead of transcribing it.
 
-When the human vouches an entry, the stamp sits alone under the entry's heading, covering the whole entry — so a material edit to any covered part takes the stamp off until the human re-vouches.
+When the human vouches an entry, the stamp sits alone under the entry's heading, covering the whole entry — so an edit to any covered part takes the stamp off until the human re-vouches.
 
 One length discipline keeps a ledger from bloating into a second spec: **it records the act of judgment, not the content of what was chosen.** Exhaustive parameters live in the area's own document, linked from the entry.
 
