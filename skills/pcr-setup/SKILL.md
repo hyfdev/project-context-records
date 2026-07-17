@@ -1,6 +1,6 @@
 ---
 name: pcr-setup
-description: Set up Project Context Records (PCR) in the current project — safely install or update the marked PCR block in the project's AGENTS.md, create the records folder, and offer to seed the suggested topic records, idempotently. Also opens an area decision ledger on the user's declaration. Use when the user runs /pcr-setup, asks to set up, adopt, install, add, update, or re-sync PCR / Project Context Records in a project, or declares that an area should record decisions. Do NOT use for writing or editing individual records, or for changing the methodology doc itself.
+description: Set up Project Context Records (PCR) in the current project — safely install or update the marked PCR block in the project's AGENTS.md, create the records folder, and offer to seed the suggested topic records, idempotently; on update, reconciles legacy record names (offers a goal.md → intent.md rename). Also opens an area decision ledger on the user's declaration. Use when the user runs /pcr-setup, asks to set up, adopt, install, add, update, or re-sync PCR / Project Context Records in a project, or declares that an area should record decisions. Do NOT use for writing or editing individual records, or for changing the methodology doc itself.
 ---
 
 # pcr-setup
