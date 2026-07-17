@@ -14,14 +14,4 @@ Ways to contribute, in order of value:
 
 Treat the adoption block as a prompt whose success is behavior, not prose quality. When a change claims to improve compliance, keep at least one real task that previously failed and compare the current block with the candidate under the same project state, task, agent/model, and budget. Record whether the agent opened the relevant record before acting, violated a known decision, loaded irrelevant context, needed reviewer correction, or followed stale context without surfacing a conflict. Include an unrelated task when the new rule might add noise. A small reproducible case is worth more than a broad claim.
 
-## Open questions
-
-Recorded as open on purpose — real cases decide them, not foresight:
-
-- **Monorepo layout.** One records folder at the root, or one per package? Likely: records follow the agent-instructions files. No project has forced the answer yet.
-- **Concurrent runs.** One checkout runs one loop and parallel runs live in separate worktrees; whether plain git merging of records holds up beyond that needs real cases.
-- **Distill cadence.** "Whenever a human reviews" is deliberately vague; a real project's rhythm should name the trigger.
-- **The map at scale.** A single map file may stop scaling past roughly fifty records; a per-record scope field is the known, heavier fallback.
-- **Compliance measurement.** Which block rules agents actually follow, and which wash out mid-session, needs paired task runs before the methodology claims answers.
-
 For work in this repo, `AGENTS.md` holds the conventions: the canonical block copies, the translation rule, soft-wrap.
