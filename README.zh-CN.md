@@ -74,7 +74,7 @@ When working here:
   - The stamp binds the exact covered words. Any edit that changes them — or changes which words the scope covers — removes the stamp until the human re-vouches; a change that leaves the covered words identical keeps it.
   - Legacy stamp forms (undated, before the title, inside a heading) stay valid with their original scope; never move, re-date, or reinterpret one without the human's approval.
 - **Decision ledgers.** When the human declares that an area records decisions, keep that area's judgments in `<area>-decisions.md` and register new judgments there.
-  - Placement: beside the area's derived document (`DESIGN-decisions.md` beside `DESIGN.md`); with no derived document, in the records folder — a map route either way.
+  - Placement: beside the area's derived document (`DESIGN-decisions.md` beside `DESIGN.md`, typically both in the records folder); with no derived document, in the records folder — a map route either way.
   - You may propose opening a ledger; only the human opens one.
   - The register contract, stated at the top of the file: only judgments the human actually expressed enter — a finished implementation, a passed review, resemblance to a reference, or silence is not acceptance. Never invent a rationale: if no reason was given, the entry says so.
   - Record the act of judgment, not the chosen thing's full content — exhaustive detail lives in the area's own document, linked. Edit entries in place; git keeps history.
@@ -94,7 +94,7 @@ When working here:
   - `technology-stack.md` — why tools, restrictions, and pins exist; not a manifest dump.
   - `architecture.md` — units, boundaries, and why the lines are where they are; when structure isn't glanceable.
   - `gotchas.md` — traps already paid for, each with its why; only real paid lessons.
-  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (repo root by default — the spec fixes no location), enroll it in the map, and suggest wiring its linter into the project's own checks (`npx @google/design.md lint DESIGN.md`; platform variants in the spec).
+  - `DESIGN.md` — only for a visual surface; follow https://github.com/google-labs-code/design.md (records folder by default — the spec fixes no location), enroll it in the map, and suggest wiring its linter into the project's own checks with the file's actual path (e.g. `npx @google/design.md lint .agents/docs/DESIGN.md`; platform variants in the spec).
   - `loop-goal.md` — only for an unattended run: the run's contract — goal, boundaries, finish criteria. You may draft it; the run starts only once the human has vouched the whole file (stamp below the title), and a human edit plus re-vouch re-baselines it. Never edit it yourself; if the contract itself blocks progress, stop and surface the conflict rather than stepping outside it.
   - `loop-status.md` — only for an unattended run: the run's memory — done, in flight, next, blocked — overwritten in place each iteration; its final overwrite is the handover to the returning human (what landed, what to vouch, what to prune, conflicts included). Both `loop-*` files die after the human's distillation pass over that handover; git keeps them.
 <!-- PCR:END -->
@@ -131,7 +131,7 @@ When working here:
 - **`technology-stack.md`** —— 为什么是这些工具而不是被它们取代的默认、什么不许引入、什么被钉住及其原因。存在工具判断时适用；绝不是清单转录。
 - **`architecture.md`** —— 单元、单元之间的边界、以及线为什么画在这里。当结构无法从代码一眼看穿时适用。
 - **`gotchas.md`** —— 付过学费的陷阱，每个带着为什么。只收真实教训；宁可没有这个文件，也不要编造的"常见坑"。
-- **`DESIGN.md`** —— 仅当项目有视觉面：面向 coding agent 描述的视觉标识，按 [design.md 规范](https://github.com/google-labs-code/design.md)——登记进地图，该生态自带的 linter 可用于项目自己的检查。规范不规定位置；仓库根部是惯常的家。
+- **`DESIGN.md`** —— 仅当项目有视觉面：面向 coding agent 描述的视觉标识，按 [design.md 规范](https://github.com/google-labs-code/design.md)——登记进地图，该生态自带的 linter 可用于项目自己的检查。规范不规定位置；records 目录（默认 `.agents/docs/`）是惯常的家，有 design 台账时 `DESIGN-decisions.md` 与它成对放在一起。
 
 ### 地图
 
@@ -172,9 +172,7 @@ When working here:
 
 没有 superseded 状态。裁定变化时，在同一个变更里就地改写受影响的条目；git 保存演化。
 
-台账常与一份由 AI 维护现势的派生文档**成对**出现：台账保存人裁定过什么；文档保存综合出的当前真相，可对着台账核验。这对配对的视觉实例是 `DESIGN.md` 旁边的 `DESIGN-decisions.md`。台账挨着它的派生文档住；没有派生文档时，住 records 目录。无论哪种，地图都路由到它。
-
-这个模式有一个公开的真实前身：见 [musubi 的 `DESIGN-decisions.md`](https://github.com/hyfdev/musubi/blob/v2/DESIGN-decisions.md)——台账正是从这个文件提升而来。它早于上面的格式，而它身上可见的漂移——五值 status 词表在实践中塌缩成一个值、条目膨胀进规范细节、文件底部一段自我发明的格式说明——正是这个格式存在的原因。
+台账常与一份由 AI 维护现势的派生文档**成对**出现：台账保存人裁定过什么；文档保存综合出的当前真相，可对着台账核验。这对配对的视觉实例是 `DESIGN.md` 旁边的 `DESIGN-decisions.md`，通常都在 records 目录里。台账挨着它的派生文档住；没有派生文档时，住 records 目录。无论哪种，地图都路由到它。
 
 ### 积累与蒸馏
 
