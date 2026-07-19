@@ -174,8 +174,6 @@ There is no superseded state. When a ruling changes, edit the affected entries i
 
 A ledger often stands **paired** with a derived document that an AI keeps current: the ledger holds what the human ruled; the document holds the synthesized present truth, checkable against the ledger. The visual instance of the pairing is `DESIGN-decisions.md` beside `DESIGN.md`, typically both in the records folder. A ledger lives next to its derived document; with no derived document, it lives in the records folder. Either way, the map routes to it.
 
-For a real, public ancestor of this pattern, see [musubi's `DESIGN-decisions.md`](https://github.com/hyfdev/musubi/blob/v2/DESIGN-decisions.md) — the file the ledger was promoted from. It predates the format above, and the drift visible in it — a five-value status vocabulary that collapsed in practice to one value, entries swelling into spec detail, a self-invented format section at the bottom of the file — is exactly why the format exists.
-
 ### Accumulate → distill
 
 - **Accumulate** — cheap, default, agent-done. Record as you go, keep records fresh, and mention what you recorded — a human can't prune or vouch what they never see. Noise is expected; volume is fine.
